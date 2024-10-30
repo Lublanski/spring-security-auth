@@ -1,0 +1,22 @@
+database:
+  name: postgres
+  host: localhost
+  port: 5432
+  uri: postgresql://${database.host}:${database.port}/${database.name}
+  user: postgres
+  password: postgres
+
+spring:
+  r2dbc:
+    url: r2dbc:${database.uri}
+    username: ${database.user}
+    password: ${database.password}
+
+  flyway:
+    url: jdbc:${database.uri}
+    user: ${database.user}
+    password: ${database.password}
+    locations: classpath:db/migration
+
+jwt:
+  secretKey: secretsecretsecretsecretsecretsecretsecret
